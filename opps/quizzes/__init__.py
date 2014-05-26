@@ -10,8 +10,8 @@ __version__ = ".".join(map(str, VERSION))
 __status__ = "Development"
 __description__ = u"quizzes App for Opps CMS"
 
-__author__ = u"YACOWS"
+__author__ = u"Bruno Rocha"
 __credits__ = []
-__email__ = u""
+__email__ = u"rochacbruno@gmail.com"
 __license__ = u""
-__copyright__ = u"Copyright 2014, YACOWS"
+__copyright__ = u"Copyright 2013, Bruno Rocha"
