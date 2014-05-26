@@ -2,14 +2,11 @@
 
 from django.conf.urls import patterns, url
 
-from .views import QuizzesDetail
+from . import views
 
 
 urlpatterns = patterns(
     "",
-    url(
-      r'',
-      QuizzesDetail.as_view(),
-      name='detail_quizzes'
-    ),
+    url(r'^quizzes/containerpoll/vote/(?P<pk>\d+)/', views.ContainerPollVoteView.as_view(), name='containerpoll_vote'),
+    url(r'^quizzes/containerduel/vote/(?P<pk>\d+)/', views.ContainerDuelVoteView.as_view(), name='containerduel_vote'),
 )

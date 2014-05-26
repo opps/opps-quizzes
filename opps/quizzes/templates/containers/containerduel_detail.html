@@ -1,0 +1,35 @@
+{% load quizzes_tags images_tags %}
+
+ Opps Quiz Detail
+
+<h1>{{ object.title }}</h1>
+
+
+{% if object.main_image %}
+<img src="{% image_url object.main_image.image.url width=100 %}" />
+{% endif %}
+
+{% if error %}
+<div class="alert alert-error">
+  {{ error }}
+</div>
+{% endif %}
+
+{% can_vote_in_quiz object as can_vote %}
+{% if can_vote and object.is_opened %}
+<form method="post" action="{% url 'containerduel_vote' object.pk %}">
+    {% csrf_token %}
+    {{ object.get_form.as_p }}
+    <input type="submit" value="Vote">
+</form>
+{% elif object.show_results %}
+    {% for container, votes in object.get_result %}
+    <p>{{ container.title }} - {{ votes }}</p>
+    {% endfor %}
+{% endif %}
+
+<h2>Resultado consolidado do canal</h2>
+{% get_channel_result object.channel as channel_result %}
+{% for container, votes in channel_result %}
+<p>{{ container.title }} - {{ votes }}</p>
+{% endfor %}
